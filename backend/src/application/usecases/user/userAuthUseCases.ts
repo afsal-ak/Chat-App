@@ -230,9 +230,8 @@ export class UserAuthUsecases implements IUserAuthUseCases {
     const hashNewPassword = await hashPassword(newPassword);
     await this._userRepository.changePassword(userId, hashNewPassword);
   }
-
-  async searchUsersForChat(userId: string, search: string, role: IRole): Promise<IUser[] | null> {
-    return await this._userRepository.searchUsersForChat(userId,search,role)
-  }
+  async searchAllUsers (search: string): Promise<IUser[]> {
+    return await this._userRepository.searchAllUsers(search);
+   }
 
 }

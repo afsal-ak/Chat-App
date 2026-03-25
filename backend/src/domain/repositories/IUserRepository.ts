@@ -16,10 +16,7 @@ export interface IUserRepository {
     profileImage: { url: string; public_id: string }
   ): Promise<IUser | null>;
  
-   searchUsersForChat(
-    userId: string,
-    search: string,
-    role:IRole
-  ): Promise<IUser[]>   
+       searchAllUsers(search: string): Promise<IUser[]>;
+
 
 }

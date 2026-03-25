@@ -79,7 +79,7 @@ router.post(
 router.post(AUTH_ROUTES.PASSWORD_CHANGE, userAuthMiddleware, userAuthController.changePassword);
 
 
-router.get(USER_ROUTES.SEARCH_USERS_FOR_CHAT,userAuthMiddleware,userAuthController.searchUsersForChat)
+router.get(USER_ROUTES.SEARCH_USERS_FOR_CHAT,userAuthMiddleware,userAuthController.searchAllUsers)
 
 // PROFILE ROUTES
 router.get(PROFILE_ROUTES.GET_PROFILE, userAuthMiddleware, profileController.getUserProfile);
