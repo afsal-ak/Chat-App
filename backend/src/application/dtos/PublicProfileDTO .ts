@@ -1,5 +1,19 @@
 import { IUser } from '@domain/entities/IUser';
-
+export interface UpdateProfileDTO {
+  fullName?: string;
+  bio?: string;
+  gender?: 'male' | 'female';
+  dob?: Date;
+  interests?: string[];
+  links?: { platform: string; url: string }[];
+  address?: {
+    street?: string;
+    city?: string;
+    state?: string;
+    zip?: string;
+    country?: string;
+  };
+}
 export interface PublicProfileDTO {
   _id: string;
   username: string;
@@ -13,19 +27,30 @@ export interface PublicProfileDTO {
     url: string;
     public_id: string;
   };
-  followers: string[];
-  followersCount: number;
-  followingCount: number;
+   
 }
-
+export interface ProfileDTO {
+  _id: string;
+  username: string;
+  email: string;
+  fullName?: string;
+  bio?: string;
+  phone?: number;
+  profileImage?: {
+    url: string;
+    public_id: string;
+  };
+  coverImage?: {
+    url: string;
+    public_id: string;
+  };
+   
+   createdAt?: string;
+  updatedAt?: string;
+}
 export const mapToPublicProfileDTO = (user: IUser): PublicProfileDTO => ({
   _id: user._id!.toString(),
   username: user.username!,
   fullName: user.fullName,
-  bio: user.bio,
-  profileImage: user.profileImage,
-  coverImage: user.coverImage,
-  followers: user.followers as string[],
-  followersCount: user.followers?.length || 0,
-  followingCount: user.following?.length || 0,
-});
+   profileImage: user.profileImage,
+  });

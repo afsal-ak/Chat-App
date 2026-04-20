@@ -83,7 +83,9 @@ router.get(USER_ROUTES.SEARCH_USERS_FOR_CHAT,userAuthMiddleware,userAuthControll
 
 // PROFILE ROUTES
 router.get(PROFILE_ROUTES.GET_PROFILE, userAuthMiddleware, profileController.getUserProfile);
- router.put(
+router.put(PROFILE_ROUTES.UPDATE_PROFILE, userAuthMiddleware, profileController.updateUserProfile);
+ 
+router.put(
   PROFILE_ROUTES.UPLOAD_PROFILE_IMAGE,
   userAuthMiddleware,
   upload.single('image'),
@@ -97,10 +99,7 @@ router.get(CHAT_ROOM_ROUTE.GET_USER_ROOMS, userAuthMiddleware, chatRoomControlle
 router.delete(CHAT_ROOM_ROUTE.DELETE, userAuthMiddleware,chatRoomController.deleteRoom);
 
 //MESSAGE ROUTES
- //router.post(MESSAGE_ROUTE.SEND, userAuthMiddleware, messageController.sendMessage);
  router.get(MESSAGE_ROUTE.GET_BY_ROOM, userAuthMiddleware, messageController.getMessages);
-//router.patch(MESSAGE_ROUTE.MARK_AS_READ, userAuthMiddleware, messageController.markMessageRead);
-// router.delete(MESSAGE_ROUTE.DELETE, userAuthMiddleware,messageController.deleteMessage);
  router.post(MESSAGE_ROUTE.UPLOAD_MEDIA, userAuthMiddleware,chatUpload.single('file'), messageController.uploadMediaToChat);
 
 

@@ -1,3 +1,4 @@
+import { ProfileDTO, UpdateProfileDTO } from '@application/dtos/PublicProfileDTO ';
 import { IUser } from '@domain/entities/IUser';
 
 export interface IProfileUseCases {
@@ -7,5 +8,6 @@ export interface IProfileUseCases {
     userId: string,
     profileImage: { url: string; public_id: string }
   ): Promise<IUser | null>;
- 
+   updateUserProfile(userId: string, profileData: UpdateProfileDTO): Promise<IUser | null>;
+
 }

@@ -3,6 +3,7 @@ import { IUser } from '@domain/entities/IUser';
  import { AppError } from '@shared/utils/AppError';
 import { IProfileUseCases } from '@application/useCaseInterfaces/user/IProfileUseCases';
 import { IUserRepository } from '@domain/repositories/IUserRepository';
+import { ProfileDTO, UpdateProfileDTO } from '@application/dtos/PublicProfileDTO ';
 
 
 export class ProfileUseCases implements IProfileUseCases {
@@ -22,5 +23,12 @@ export class ProfileUseCases implements IProfileUseCases {
     return await this._userRepo.updateProfileImage(userId, profileImage);
   }
 
+  async updateUserProfile(
+    userId: string,
+    profileData: UpdateProfileDTO
+  ): Promise<IUser | null> {
+    const profile = await this._userRepo.updateUserProfile(userId, profileData);
+    return profile?profile:null 
+  }
 
 }

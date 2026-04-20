@@ -3,7 +3,7 @@ import { getUserIdFromRequest } from '@shared/utils/getUserIdFromRequest';
 import { IUser } from '@domain/entities/IUser';
 import { uploadCloudinary } from '@infrastructure/services/cloudinary/cloudinaryService';
 import { HttpStatus } from 'constants/HttpStatus/HttpStatus';
-import { mapToPublicProfileDTO } from '@application/dtos/PublicProfileDTO ';
+import { mapToPublicProfileDTO, UpdateProfileDTO } from '@application/dtos/PublicProfileDTO ';
 import { IProfileUseCases } from '@application/useCaseInterfaces/user/IProfileUseCases';
 
 export class ProfileController {
@@ -17,6 +17,21 @@ export class ProfileController {
       res.status(HttpStatus.OK).json({
         userProfile,
         message: 'user profile fetched successfully',
+      });
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  updateUserProfile = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const userId = getUserIdFromRequest(req);
+      const profileData: UpdateProfileDTO = req.body.profileData;
+      const updatedProfile = await this._profileUseCases.updateUserProfile(userId, profileData);
+      res.status(HttpStatus.OK).json({
+        success: true,
+        message: 'User profile updated successfully',
+        userProfile: updatedProfile,
       });
     } catch (error) {
       next(error);

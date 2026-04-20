@@ -3,6 +3,7 @@ import { UserModel } from '@infrastructure/models/User';
 import { IUserRepository } from '@domain/repositories/IUserRepository';
 import { AppError } from '@shared/utils/AppError';
 import { IPaginatedResult } from '@domain/entities/IPaginatedResult';
+import { HttpStatus } from '@constants/HttpStatus/HttpStatus';
 
 export class UserRepository implements IUserRepository {
 
@@ -80,6 +81,28 @@ export class UserRepository implements IUserRepository {
   }
 
 
+  async updateUserProfile(id: string, profileData: Partial<IUser>): Promise<IUser | null> {
+    const checkUsername = await UserModel.findOne({
+      _id: { $ne: id },
+      username: new RegExp(`^${profileData.username}$`, 'i'),
+    });
+
+    if (checkUsername) {
+      throw new AppError(HttpStatus.BAD_REQUEST, 'Username is taken please try new one');
+    }
+
+    const updated = await UserModel.findByIdAndUpdate(id, profileData, {
+      new: true,
+    })
+      .select('username email profileImage bio fullName gender dob phone')
+      .lean();
+
+    if (!updated) {
+      throw new AppError(HttpStatus.NOT_FOUND, 'User not found');
+    }
+
+    return updated;
+  }
   async searchAllUsers(search: string): Promise<IUser[]> {
     const searchRegex = { $regex: search, $options: 'i' };
 
