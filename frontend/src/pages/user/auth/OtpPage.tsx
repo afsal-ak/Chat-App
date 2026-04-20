@@ -86,7 +86,7 @@ const VerifyOtp = () => {
           />
 
           <Button
-            className="w-full mb-2 bg-orange"
+            className="w-full mb-2 bg-blue-500"
             onClick={handleVerify}
             disabled={otp.length !== 6 || loading}
           >
@@ -109,7 +109,7 @@ const VerifyOtp = () => {
               disabled={!isExpired || resendLoading}
               className={`font-semibold transition ${
                 isExpired && !resendLoading
-                  ? 'text-orange hover:underline'
+                  ? 'text-blue-500 hover:underline'
                   : 'text-gray-400 cursor-not-allowed'
               }`}
             >

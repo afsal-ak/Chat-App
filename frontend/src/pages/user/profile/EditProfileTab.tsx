@@ -10,8 +10,7 @@ import { Label } from '@/components/ui/Label';
 import { Button } from '@/components/Button';
 import { Textarea } from '@/components/ui/textarea';
 import type { IUser } from '@/types/IUser';
-import CoverImageTab from './CoverImage';
-import { toast } from 'sonner';
+ import { toast } from 'sonner';
 import ProfileImageTab from './ProfileImageTab';
 type Props = {
   user?: IUser;
@@ -37,8 +36,7 @@ const EditProfileTab = ({ user, loading,refetchUser }: Props) => {
       username: user?.username,
       dob: user?.dob ? new Date(user.dob).toISOString().slice(0, 10) : '',
       gender: user?.gender,
-      bio: user?.bio,
-      phone: user?.phone?.toString(),
+       phone: user?.phone?.toString(),
     },
   });
 
@@ -66,11 +64,7 @@ const EditProfileTab = ({ user, loading,refetchUser }: Props) => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-6 space-y-10">
-        {/* Cover Image Section */}
-    <div className="bg-white p-6 rounded-md shadow-md space-y-4">
-      <h2 className="text-xl font-semibold mb-2">Cover Image</h2>
-      <CoverImageTab user={user} loading={loading} />
-    </div>
+     
 
     {/* Profile Image Section */}
     <div className="bg-white p-6 rounded-md shadow-md space-y-4">
@@ -100,14 +94,7 @@ const EditProfileTab = ({ user, loading,refetchUser }: Props) => {
             )}
           </div>
 
-          <div>
-            <Label htmlFor="dob">Date of Birth</Label>
-            <Input {...register('dob')} type="date" />
-            {errors.dob && (
-              <p className="text-red-500 text-sm">{errors.dob.message}</p>
-            )}
-          </div>
-
+          
           <div>
             <Label htmlFor="gender">Gender</Label>
             <select
@@ -119,16 +106,7 @@ const EditProfileTab = ({ user, loading,refetchUser }: Props) => {
             </select>
           </div>
 
-          <div className="md:col-span-2">
-            <Label htmlFor="bio">Bio</Label>
-            <Textarea
-              {...register('bio')}
-              placeholder="Tell us about yourself"
-            />
-            {errors.bio && (
-              <p className="text-red-500 text-sm">{errors.bio.message}</p>
-            )}
-          </div>
+           
 
           <div>
             <Label htmlFor="phone">Phone Number</Label>

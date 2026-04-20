@@ -35,46 +35,16 @@ useEffect(() => {
         <div className="flex items-center justify-between">
           {/* Left - Logo & Links */}
           <div className="flex items-center space-x-8">
-            <Link to="/" className="text-2xl font-bold">
-              <span className="text-orange">Tripsera</span>
+            <Link to="/chat" className="text-2xl font-bold">
+              <span className="text-blue-600">Chatify</span>
             </Link>
 
-            <nav className="hidden md:flex items-center space-x-8">
-              <Link to="/" className="text-foreground hover:text-orange transition-colors">
-                Home
-              </Link>
-              <Link to="/packages" className="text-foreground hover:text-orange transition-colors">
-                Packages
-              </Link>
-              <Link to="/blog" className="text-foreground hover:text-orange transition-colors">
-                Blog
-              </Link>
-              <Link to="/custom-package" className="text-foreground hover:text-orange transition-colors">
-                Custom Package
-              </Link>
-              <Link to="/chatbot" className="text-foreground hover:text-orange transition-colors">
-                Chat Bot
-              </Link>
-              {/* <Link to="/about" className="text-foreground hover:text-orange transition-colors">
-                About Us
-              </Link>
-              <Link to="/contact" className="text-foreground hover:text-orange transition-colors">
-                Contact
-              </Link> */}
-            </nav>
+             
           </div>
 
           {/* Right - Icons & Auth */}
           <div className="flex items-center space-x-4">
-            {/* Chat Icon with Unread Badge */}
-            <Link to="/chat" className="relative">
-              <MessageCircle className="w-6 h-6 text-foreground hover:text-orange" />
-              {totalChatUnread > 0 && (
-                <span className="absolute -top-1 -right-2 bg-red-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
-                  {totalChatUnread}
-                </span>
-              )}
-            </Link>
+             
 
             
 
@@ -93,17 +63,12 @@ useEffect(() => {
 
                 <div className="absolute top-full right-0 mt-2 w-44 bg-white shadow-md rounded-md border opacity-0 group-hover:opacity-100 group-hover:visible invisible transition-all duration-200 z-50">
                   <Link
-                    to="/account/profile"
+                    to="/profile"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                   >
-                    My Account
+                    My Profile
                   </Link>
-                  <Link
-                    to="/account/wishlist"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Wishlist
-                  </Link>
+                 
                   <button
                     onClick={() => {
                       dispatch(logoutUser());
@@ -149,38 +114,11 @@ useEffect(() => {
         {/* Mobile Dropdown */}
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 space-y-4">
-            <Link
-              to="/"
-              className="block text-foreground hover:text-orange"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Home
-            </Link>
+             
             
+             
             <Link
-              to="/chat"
-              className="block text-foreground hover:text-orange"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Chat {totalChatUnread > 0 && `(${totalChatUnread})`}
-            </Link>
-            
-            <Link
-              to="/about"
-              className="block text-foreground hover:text-orange"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              About Us
-            </Link>
-            <Link
-              to="/contact"
-              className="block text-foreground hover:text-orange"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Contact
-            </Link>
-            <Link
-              to="/account/profile"
+              to="/profile"
               className="block text-foreground hover:text-orange"
               onClick={() => setIsMobileMenuOpen(false)}
             >

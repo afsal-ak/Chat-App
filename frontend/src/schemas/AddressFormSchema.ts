@@ -31,13 +31,7 @@ export const AddressSchema = z.object({
     })
     .transform((val) => val.trim()),
 
-  country: z
-    .string()
-    .min(3, 'Country must be at least 3 characters')
-    .refine((val) => !/\d/.test(val), {
-      message: 'Country must not contain numbers',
-    })
-    .transform((val) => val.trim()),
+  
 });
 
 export type AddressFormSchema = z.infer<typeof AddressSchema>;

@@ -25,8 +25,7 @@ export const ProfileSchema = z.object({
     })
     .optional(),
 
-  bio: z.string().trim().min(5, 'Bio must be at least 5 characters').optional(),
-
+ 
   phone: z
     .string()
     .trim()
@@ -34,16 +33,7 @@ export const ProfileSchema = z.object({
       message: 'Phone number must be exactly 10 digits',
     }),
 
-  links: z
-    .array(
-      z.object({
-        platform: z.enum(['Instagram', 'YouTube', 'Twitter', 'Facebook', 'LinkedIn'], {
-          errorMap: () => ({ message: 'Invalid platform selected' }),
-        }),
-        url: z.string().url('Enter a valid URL'),
-      })
-    )
-    .optional(),
+   
 });
 
 export type ProfileFormSchema = z.infer<typeof ProfileSchema>;

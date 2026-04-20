@@ -10,7 +10,7 @@ interface Props {
 const RedirectIfAuth = ({ children }: Props) => {
   const isAuthenticated = useSelector((state: RootState) => state.userAuth.isAuthenticated);
 
-  return isAuthenticated ? <Navigate to="/home" replace /> : <>{children}</>;
+  return isAuthenticated ? <Navigate to="/chat" replace /> : <>{children}</>;
 };
 
 export default RedirectIfAuth;

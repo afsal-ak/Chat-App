@@ -47,9 +47,9 @@ const Login = () => {
     <div className="min-h-screen flex items-center justify-center font-poppins bg-background px-4">
       <div className="flex w-full max-w-5xl shadow-lg rounded-lg overflow-hidden bg-white">
         {/* Left Side */}
-        <div className="hidden md:flex md:w-1/2 bg-orange items-center justify-center p-8">
+        <div className="hidden md:flex md:w-1/2 bg-blue-500 items-center justify-center p-8">
           <div className="text-center text-white">
-            <h2 className="text-3xl font-bold mb-4">Welcome Back to Picnigo</h2>
+            <h2 className="text-3xl font-bold mb-4">Welcome Back to Chatify</h2>
             <p className="text-base leading-relaxed">
               Discover unforgettable journeys, explore breathtaking destinations, and turn your
               travel dreams into reality. Your next adventure starts here!
@@ -66,7 +66,7 @@ const Login = () => {
               handleSubmit();
             }}
           >
-            <h2 className="text-2xl font-bold text-orange mb-6 text-center">Login to Picnigo</h2>
+            <h2 className="text-2xl font-bold text-blue mb-6 text-center">Login to Chatify</h2>
 
             {(localError || error) && (
               <p className="text-sm text-red-500 mb-4 text-center">{localError || error}</p>
@@ -80,7 +80,7 @@ const Login = () => {
                  autoComplete="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full border border-border px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-orange"
+                className="w-full border border-border px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue"
                 placeholder="Enter your email"
               />
             </div>
@@ -93,11 +93,11 @@ const Login = () => {
                   autoComplete="current-password"
 
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full border border-border px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-orange"
+                className="w-full border border-border px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue"
                 placeholder="Enter your password"
               />
               <div className="mb-6 text-right">
-                <Link to="/forgot-password" className="text-sm text-orange hover:underline">
+                <Link to="/forgot-password" className="text-sm text-blue-500 hover:underline">
                   Forgot your password?
                 </Link>
               </div>
@@ -105,7 +105,7 @@ const Login = () => {
 
             <button
               type="submit"
-              className="w-full bg-orange text-white py-2 rounded hover:bg-orange-dark transition"
+              className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-dark transition"
             >
               {loading ? 'Logging in...' : 'Login'}
             </button>
@@ -116,7 +116,7 @@ const Login = () => {
 
             <p className="mt-4 text-sm text-center text-muted-foreground">
               Don’t have an account?{' '}
-              <Link to="/signup" className="text-orange hover:underline">
+              <Link to="/signup" className="text-blue-500 hover:underline">
                 Signup
               </Link>
             </p>

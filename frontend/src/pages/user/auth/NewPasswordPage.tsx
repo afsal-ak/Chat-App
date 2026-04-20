@@ -45,7 +45,7 @@ const NewPasswordPage = () => {
     }
     setFormErrors({});
     try {
-      const response = await handelChangePassword(token, newPassword);
+       await handelChangePassword(token, newPassword);
       toast.success('password changed successfully');
       localStorage.removeItem('forgotToken');
       navigate('/login');
@@ -70,7 +70,7 @@ const NewPasswordPage = () => {
               id="newPassword"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
-              className="w-full px-4 py-2 border border-border rounded-md bg-bg focus:outline-none focus:ring-2 focus:ring-orange"
+              className="w-full px-4 py-2 border border-border rounded-md bg-bg focus:outline-none focus:ring-2 focus:ring-blue-400"
               required
             />
             {formErrors.password && (
@@ -87,7 +87,7 @@ const NewPasswordPage = () => {
               id="confirmPassword"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full px-4 py-2 border border-border rounded-md bg-bg focus:outline-none focus:ring-2 focus:ring-orange"
+              className="w-full px-4 py-2 border border-border rounded-md bg-bg focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
             {formErrors.confirm && (
@@ -97,7 +97,7 @@ const NewPasswordPage = () => {
 
           <button
             type="submit"
-            className="w-full bg-orange text-white font-medium py-2 rounded-md hover:bg-orange-dark transition"
+            className="w-full bg-blue-500 text-white font-medium py-2 rounded-md hover:bg-blue-dark transition"
           >
             Set New Password
           </button>
@@ -105,7 +105,7 @@ const NewPasswordPage = () => {
 
         <p className="text-xs text-center text-muted-foreground">
           Remembered your password?{' '}
-          <a href="/login" className="text-orange hover:underline">
+          <a href="/login" className="text-blue-500 hover:underline">
             Login here
           </a>
         </p>

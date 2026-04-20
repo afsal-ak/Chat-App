@@ -5,9 +5,7 @@ import { getUserProfile } from '@/services/user/profileService';
 import { toast } from 'sonner';
 import EditProfileTab from './EditProfileTab';
 import SecurityTab from './SecurityTab';
-import AddressTab from './AddressTab';
-import Dashboard from './Dashboard';
- const Profile = () => {
+   const Profile = () => {
   const [user, setUser] = useState<IUser>();
   const [loading, setLoading] = useState(true);
 
@@ -29,23 +27,19 @@ import Dashboard from './Dashboard';
 
   return (
     <div className="max-w-4xl mx-auto p-4">
-      <Tabs defaultValue="overview" className="w-full">
+      <Tabs defaultValue="edit" className="w-full">
         <TabsList className="flex gap-2 border-b mb-6 overflow-x-auto">
-          <TabsTrigger value="overview">Dashboard</TabsTrigger>
-          <TabsTrigger value="edit">Edit Profile</TabsTrigger>
-          <TabsTrigger value="address">Address</TabsTrigger>
-          <TabsTrigger value="security">Security</TabsTrigger>
+           <TabsTrigger value="edit">Edit Profile</TabsTrigger>
+           <TabsTrigger value="security">Change Password</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="overview">
-          <Dashboard user={user} loading={loading} refetchUser={getUserInfo} />
-        </TabsContent>
+        
         <TabsContent value="edit">
           <EditProfileTab user={user} loading={loading} refetchUser={getUserInfo} />
         </TabsContent>
-        <TabsContent value="address">
+        {/* <TabsContent value="address">
           <AddressTab user={user} loading={loading} refetchUser={getUserInfo} />
-        </TabsContent>
+        </TabsContent> */}
         <TabsContent value="security">
           <SecurityTab />
         </TabsContent>

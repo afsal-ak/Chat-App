@@ -92,7 +92,7 @@ const ForgotOtpPage = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-orange text-white font-medium py-2 rounded-md hover:bg-orange-dark transition flex items-center justify-center"
+            className="w-full bg-blue-500 text-white font-medium py-2 rounded-md hover:bg-blue-dark transition flex items-center justify-center"
           >
             {loading ? (
               <>
@@ -111,7 +111,7 @@ const ForgotOtpPage = () => {
             onClick={handleResend}
             disabled={!isExpired}
             className={`font-semibold ${
-              isExpired ? 'text-orange hover:underline' : 'text-gray-400 cursor-not-allowed'
+              isExpired ? 'text-blue-500 hover:underline' : 'text-gray-400 cursor-not-allowed'
             }`}
           >
             {isExpired ? 'Resend' : `Resend in ${formattedTime}`}

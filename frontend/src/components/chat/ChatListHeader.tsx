@@ -1,12 +1,11 @@
 
 import { useState } from "react";
-import { X, Plus, Settings, FilterIcon } from "lucide-react";
+import { X,  } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import UserSearchForChat from "@/components/chat/UserSearchForChat";
-import ChatFilter from "./ChatFilter";
+ import ChatFilter from "./ChatFilter";
 
 interface ChatListHeaderProps {
-  role:'user'|'admin',
+  role:'user',
   totalUnread:number,
   onToggleSidebar?: () => void;
   showToggle?: boolean;
@@ -18,8 +17,7 @@ export const ChatListHeader = ({
   showToggle = false,
 }: ChatListHeaderProps) => {
     const [isUserSearchOpen, setIsUserSearchOpen] = useState(false);
-  const [filterOpen, setFilterOpen] = useState(false);
-
+ 
   return (
     <>
       {/* Header */}
@@ -38,13 +36,7 @@ export const ChatListHeader = ({
             </button>
           )}
 
-          {/* Add Chat Button */}
-          <button
-            onClick={() => setIsUserSearchOpen(true)}
-            className="p-2 hover:bg-blue-700 rounded-full transition-colors"
-          >
-            <Plus className="w-5 h-5" />
-          </button>
+            
           <div className="relative">
             {/* FilterIcon Button */}
             

@@ -10,7 +10,7 @@ import type { IChatRoom } from "@/types/IMessage";
 
 interface Props {
     onUserSelected?: () => void;
-    onRoomCreated?: (room: IChatRoom) => void;  
+    onRoomCreated?: (room: IChatRoom) => void;
 }
 
 export default function UserSearchForChat({ onUserSelected, onRoomCreated }: Props) {
@@ -31,7 +31,11 @@ export default function UserSearchForChat({ onUserSelected, onRoomCreated }: Pro
                 }
                 setLoading(true);
                 const response = await handleSearchUserForChat(searchQuery);
-                setUsers(response.data || []);
+                const filteredUsers = (response.data || []).filter(
+                    (user: IUser) => user._id !== currentUser?._id
+                );
+
+                setUsers(filteredUsers || []);
             } catch (error) {
                 console.error("Failed to fetch users:", error);
             } finally {
@@ -91,6 +95,7 @@ export default function UserSearchForChat({ onUserSelected, onRoomCreated }: Pro
             <div className="max-h-72 overflow-y-auto">
                 {users.length > 0 ? (
                     users.map((user) => (
+
                         <div
                             key={user._id}
                             onClick={() => handleUserClick(user)}
@@ -117,7 +122,7 @@ export default function UserSearchForChat({ onUserSelected, onRoomCreated }: Pro
                 ) : searchQuery.trim() !== "" && !loading ? (
                     <p className="text-center text-gray-500">No users found</p>
                 ) : (
- <p></p>
+                    <p></p>
                 )}
             </div>
 

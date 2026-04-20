@@ -87,19 +87,20 @@ const Signup = () => {
   return (
     <div className="min-h-screen flex items-center justify-center font-poppins bg-gray-50 px-4">
       <div className="flex w-full max-w-5xl shadow-lg rounded-lg overflow-hidden bg-white">
-        <div className="hidden md:flex md:w-1/2 bg-orange items-center justify-center p-8">
+        <div className="hidden md:flex md:w-1/2 bg-blue-500 items-center justify-center p-8">
           <div className="text-center text-white">
-            <h2 className="text-3xl font-bold mb-4">Join Picnigo Today</h2>
+            <h2 className="text-3xl font-bold mb-4">Join Chatify Today</h2>
             <p className="text-base">
-              Start your journey with us — explore amazing destinations, connect with fellow
-              travelers, and book unforgettable experiences.
+             Join our chat platform and start connecting instantly. 
+             Create your account to explore real-time conversations, 
+             meet new people, and enjoy seamless communication in a secure environment.
             </p>
           </div>
         </div>
 
         <div className="w-full md:w-1/2 flex items-center justify-center p-8">
           <form onSubmit={handleSubmit} className="w-full max-w-md">
-            <h2 className="text-2xl font-bold text-orange mb-6 text-center">Create an Account</h2>
+            <h2 className="text-2xl font-bold text-blue-500 mb-6 text-center">Create an Account</h2>
 
             <div className="mb-4">
               <label className="block text-sm font-medium mb-1">Username</label>
@@ -157,7 +158,7 @@ const Signup = () => {
 
             <button
               type="submit"
-              className="w-full bg-orange text-white py-2 rounded hover:bg-orange-dark transition mb-4 flex justify-center items-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+              className="w-full  bg-blue-500 text-white py-2 rounded hover:bg-blue-dark transition mb-4 flex justify-center items-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
               disabled={loading}
             >
               {loading && (
@@ -166,24 +167,14 @@ const Signup = () => {
               {loading ? 'Processing...' : 'Sign Up'}
             </button>
 
-            {/* <button
-              type="button"
-              className="w-full flex items-center justify-center border border-gray-300 py-2 rounded hover:bg-gray-100 transition"
-            >
-              <img
-                src="/google-logo.png"
-                alt="Google"
-                className="w-5 h-5 mr-2"
-              />
-              Sign up with Google
-            </button> */}
+          
             <div className="my-4 text-center text-sm text-muted-foreground">or</div>
             <div className="w-64 mx-auto flex items-center justify-center py-2 rounded  transition">
               <GoogleLoginButton />
             </div>
             <p className="mt-4 text-sm text-center">
               Already have an account?{' '}
-              <Link to="/login" className="text-orange underline">
+              <Link to="/login" className="text-blue-500 underline">
                 Login
               </Link>
             </p>

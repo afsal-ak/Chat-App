@@ -45,7 +45,7 @@ const ForgotPassword = () => {
               id="email"
               value={email}
               onChange={handleEmailChange}
-              className="w-full px-4 py-2 border border-border rounded-md bg-bg focus:outline-none focus:ring-2 focus:ring-orange"
+              className="w-full px-4 py-2 border border-border rounded-md bg-bg focus:outline-none focus:ring-2 focus:ring-blue"
               required
             />
           </div>
@@ -53,7 +53,7 @@ const ForgotPassword = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-orange text-white font-medium py-2 rounded-md hover:bg-orange-dark transition flex items-center justify-center"
+            className="w-full bg-blue-500 text-white font-medium py-2 rounded-md hover:bg-blue-dark transition flex items-center justify-center"
           >
             {loading ? (
               <>
@@ -68,7 +68,7 @@ const ForgotPassword = () => {
 
         <p className="text-xs text-center text-muted-foreground">
           Remember your password?{' '}
-          <a href="/login" className="text-orange hover:underline">
+          <a href="/login" className="text-blue-500 hover:underline">
             Login here
           </a>
         </p>

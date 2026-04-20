@@ -1,11 +1,14 @@
-import { Route } from 'react-router-dom';
-import Home from '@/pages/user/home/Home';
-
+ import ChatLayout from '@/layouts/ChatLayout';
+import MessageMainPage from '@/pages/user/chat/MessageMainPage';
+ import { Route } from 'react-router-dom';
+ 
 import { Fragment } from 'react/jsx-runtime';
 const CommonRoutes = (
   <Fragment>
-    <Route path="/" element={<Home />} />
-  
+     <Route path='/chat' element={<ChatLayout />}>
+      <Route path=":roomId" element={<MessageMainPage />} />
+    </Route>
+
   </Fragment>
 );
 
