@@ -19,7 +19,7 @@ const Login = () => {
     if (isAuthenticated) {
       //   console.log(isAuthenticated,'isAuth')
 
-      navigate('/home');
+      navigate('/chat');
     }
   }, [isAuthenticated, navigate]);
 

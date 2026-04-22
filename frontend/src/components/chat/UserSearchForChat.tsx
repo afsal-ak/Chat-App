@@ -4,7 +4,7 @@ import { handleSearchUserForChat } from "@/services/user/profileService";
 import { createChatRoom } from "@/services/user/messageService";
 import { useNavigate } from "react-router-dom";
 import type { RootState } from "@/redux/store";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import type { IUser } from "@/types/IUser";
 import type { IChatRoom } from "@/types/IMessage";
 
@@ -20,8 +20,7 @@ export default function UserSearchForChat({ onUserSelected, onRoomCreated }: Pro
     const [creatingRoom, setCreatingRoom] = useState(false);
     const currentUser = useSelector((state: RootState) => state.userAuth.user);
     const navigate = useNavigate();
-
-    // Fetch users when searchQuery changes
+     // Fetch users when searchQuery changes
     useEffect(() => {
         const fetchUsers = async () => {
             try {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Button } from '../ui/button';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import { Menu, User, X, Bell, MessageCircle } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '@/redux/slices/userAuthSlice';
@@ -8,6 +8,7 @@ import type { AppDispatch, RootState } from '@/redux/store';
 import { toast } from 'sonner';
 import { useTotalUnreadCount } from '@/hooks/useTotalUnreadCount';
   const Navbar = () => {
+    const navigate=useNavigate()
   const dispatch = useDispatch<AppDispatch>();
 
   const { isAuthenticated, accessToken, user } = useSelector(
@@ -17,12 +18,13 @@ import { useTotalUnreadCount } from '@/hooks/useTotalUnreadCount';
  
 const totalChatUnread =useTotalUnreadCount(user?._id!)
 
-useEffect(() => {
+ 
+  useEffect(() => {
     if (!accessToken) {
       dispatch(logoutUser());
+      navigate('/login')
     }
-  }, []);
-
+  }, [accessToken, dispatch]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const profileImage = user?.profileImage?.url
@@ -85,14 +87,14 @@ useEffect(() => {
                 <Link to="/login">
                   <Button
                     variant="outline"
-                    className="border-orange text-orange hover:bg-orange hover:text-white hidden sm:flex"
+                    className="border-blue text-blue-500 hover:bg-blue hover:text-white hidden sm:flex"
                   >
                     <User className="w-4 h-4 mr-2" />
                     Login
                   </Button>
                 </Link>
                 <Link to="/signup">
-                  <Button className="bg-orange hover:bg-orange-dark text-white hidden sm:flex">
+                  <Button className="bg-blue-500 hover:bg-blue-dark text-white hidden sm:flex">
                     Sign Up
                   </Button>
                 </Link>

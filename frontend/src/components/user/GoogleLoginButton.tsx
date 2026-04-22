@@ -25,7 +25,7 @@ const GoogleLoginButton = () => {
       // console.log(accessToken,'from google')
 
       toast.success('Logged in with Google');
-      navigate('/home');
+      navigate('/chat');
     } catch (error: any) {
       toast.error('Google login failed');
     }

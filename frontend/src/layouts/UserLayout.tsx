@@ -9,7 +9,8 @@ import { fetchUserRooms } from '@/redux/slices/chatRoomSlice';
 const UserLayout = () => {
 
   const dispatch = useDispatch<AppDispatch>()
-  const userId = useSelector((state: RootState) => state.userAuth.user?._id);
+  const {userId} = useSelector((state: RootState) => state.userAuth);
+
    useGlobalSocket(userId!);
   useChatRoomsSocket({ currentUserId: userId! });
 

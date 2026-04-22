@@ -1,5 +1,5 @@
-import { useSelector } from "react-redux";
-import type { RootState } from "@/redux/store";
+import { useDispatch, useSelector } from "react-redux";
+import type { AppDispatch, RootState } from "@/redux/store";
 import { ChatRoomItem } from "@/components/chat/ChatRoomItem";
 import { ChatListHeader } from "@/components/chat/ChatListHeader";
 import UserSearchForChat from "@/components/chat/UserSearchForChat";
@@ -7,6 +7,7 @@ import { MessageCircle, X } from "lucide-react";
 import { useState } from "react";
 import type { IChatRoom } from "@/types/IMessage";
 import { useTotalUnreadCount } from "@/hooks/useTotalUnreadCount";
+import { fetchUserRooms } from "@/redux/slices/chatRoomSlice";
 
 interface ChatListProps {
   onRoomSelect: (room: IChatRoom) => void;
@@ -19,9 +20,11 @@ export const ChatList = ({ onRoomSelect, selectedRoomId }: ChatListProps) => {
     (state: RootState) => state.userAuth.user?._id
   );
 
+    const dispatch = useDispatch<AppDispatch>();
+
+
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(false);
-
   const totalUnread = useTotalUnreadCount(currentUserId!);
 
   const filteredRooms = rooms.filter((room) => {
@@ -78,10 +81,16 @@ export const ChatList = ({ onRoomSelect, selectedRoomId }: ChatListProps) => {
 
             </div>
 
-            <UserSearchForChat
+            {/* <UserSearchForChat
               onRoomCreated={() => {}}
               onUserSelected={() => setShowSearch(false)}
-            />
+            /> */}
+            <UserSearchForChat
+  onRoomCreated={() => {
+    dispatch(fetchUserRooms({isAdmin:false}))
+  }}
+  onUserSelected={() => setShowSearch(false)}
+/>
           </div>
         )}
       </div>
